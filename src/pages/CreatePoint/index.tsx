@@ -1,5 +1,5 @@
 import React, { useEffect, useState, ChangeEvent, FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { Map, TileLayer, Marker } from "react-leaflet";
 import { LeafletMouseEvent } from "leaflet";
@@ -28,6 +28,8 @@ interface IBGECityResponse {
 }
 
 const CreatePoint = () => {
+  const history = useHistory();
+
   const [items, setItems] = useState<Item[]>([]);
   const [ufs, setUfs] = useState<string[]>([]);
   const [cities, setCities] = useState<string[]>([]);
@@ -143,7 +145,7 @@ const CreatePoint = () => {
 
     await api.post("/points", data);
 
-    alert("Point created");
+    history.push("/");
   }
 
   return (
