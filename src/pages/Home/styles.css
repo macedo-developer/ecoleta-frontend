@@ -18,7 +18,31 @@
 }
 
 #page-home .content header {
+  width: 100%;
   margin: 48px 0 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#page-home .content header a {
+  text-decoration: none;
+
+  color: var(--title-color);
+  font-weight: 700;
+
+  display: flex;
+
+  transition: filter 400ms;
+}
+
+#page-home .content header a:hover {
+  filter: brightness(90%);
+}
+
+#page-home .content header a svg {
+  margin-right: 10px;
 }
 
 #page-home .content main {
