@@ -7,6 +7,7 @@ import { LeafletMouseEvent } from "leaflet";
 import Dropzone from "../../components/Dropzone";
 
 import { FiArrowLeft } from "react-icons/fi";
+import InputMask from "react-input-mask";
 
 import "./styles.css";
 
@@ -111,7 +112,11 @@ const CreatePoint = () => {
   }
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
-    const { name, value } = event.target;
+    let { name, value } = event.target;
+
+    if (name === "whatsapp") {
+      value = value.replace(/([\u0300-\u036f\s]|[^0-9a-zA-Z])/g, "");
+    }
 
     setFormData({ ...formData, [name]: value });
   }
@@ -197,7 +202,8 @@ const CreatePoint = () => {
             </div>
             <div className="field">
               <label htmlFor="whatsapp">Whatsapp</label>
-              <input
+              <InputMask
+                mask="+55 (99) 99999-9999"
                 type="text"
                 name="whatsapp"
                 id="whatsapp"
