@@ -3,6 +3,8 @@
 
   background: url("../../assets/home-background.svg") no-repeat 630px bottom;
   background-position-y: 16vh;
+
+  margin: 0 auto;
 }
 
 #page-home .content {
@@ -10,7 +12,7 @@
   height: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 10px;
 
   display: flex;
   flex-direction: column;

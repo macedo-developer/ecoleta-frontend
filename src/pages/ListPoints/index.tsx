@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
 import { Map, Marker, TileLayer } from "react-leaflet";
-import { LeafletMouseEvent } from "leaflet";
 
 import logo from "../../assets/logo.svg";
+
+import "./styles.css";
 
 const ListPoints = () => {
   const [initialPosition, setInitialPosition] = useState<[number, number]>([
