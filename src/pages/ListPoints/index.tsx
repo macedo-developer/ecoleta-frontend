@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 
 import { Link } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
-import { Map, Marker, TileLayer } from "react-leaflet";
+import { Map, Marker, TileLayer, Popup } from "react-leaflet";
 
 import logo from "../../assets/logo.svg";
+
+import api from "../../services/api";
 
 import "./styles.css";
 
@@ -15,13 +17,33 @@ interface Item {
   image_url: string;
 }
 
+interface Point {
+  id: number;
+  name: string;
+  image: string;
+  image_url: string;
+  latitude: number;
+  longitude: number;
+}
+
 const ListPoints = () => {
+  const [uf, setUf] = useState("");
+  const [city, setCity] = useState("");
+
   const [initialPosition, setInitialPosition] = useState<[number, number]>([
     0,
     0,
   ]);
 
   const [items, setItems] = useState<Item[]>([]);
+  const [selectedItems, setSelectItems] = useState<number[]>([]);
+  const [points, setPoints] = useState<Point[]>([]);
+
+  useEffect(() => {
+    api.get("/items").then((response) => {
+      setItems(response.data);
+    });
+  }, []);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -30,6 +52,32 @@ const ListPoints = () => {
       setInitialPosition([latitude, longitude]);
     });
   }, []);
+
+  function handleSelectItem(id: number) {
+    const alreadySelected = selectedItems.findIndex((item) => item === id);
+
+    if (alreadySelected >= 0) {
+      const filteredItems = selectedItems.filter((item) => item !== id);
+
+      setSelectItems(filteredItems);
+    } else {
+      setSelectItems([...selectedItems, id]);
+    }
+  }
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault();
+
+    api
+      .get("/points", {
+        params: {
+          city: city,
+          uf: uf,
+          items: selectedItems,
+        },
+      })
+      .then((response) => setPoints(response.data));
+  }
 
   return (
     <div id="page-list-point">
@@ -45,7 +93,7 @@ const ListPoints = () => {
         <main>
           <h1>Pesquise Pontos de Coleta</h1>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <fieldset>
               <legend>
                 <h2>Dados</h2>
@@ -53,12 +101,23 @@ const ListPoints = () => {
               <div className="field-group">
                 <div className="field">
                   <label>Estado</label>
-                  <input type="text" placeholder="Ex: PB" max={2} />
+                  <input
+                    type="text"
+                    placeholder="Ex: PB"
+                    max={2}
+                    value={uf}
+                    onChange={(e) => setUf(e.target.value)}
+                  />
                 </div>
 
                 <div className="field">
                   <label>Cidade</label>
-                  <input type="text" placeholder="Ex: João Pessoa" />
+                  <input
+                    type="text"
+                    placeholder="Ex: João Pessoa"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                  />
                 </div>
               </div>
             </fieldset>
@@ -70,7 +129,13 @@ const ListPoints = () => {
 
               <ul className="items-grid">
                 {items.map((item) => (
-                  <li key={item.id}>
+                  <li
+                    key={item.id}
+                    onClick={() => handleSelectItem(item.id)}
+                    className={
+                      selectedItems.includes(item.id) ? "selected" : ""
+                    }
+                  >
                     <img src={item.image_url} alt={item.title} />
                     <span>{item.title}</span>
                   </li>
@@ -78,19 +143,27 @@ const ListPoints = () => {
               </ul>
             </fieldset>
 
-            <button type="submit">Pesquisar</button>
+            <button type="submit">Exibir Resultados</button>
 
-            <span>Consulte o resultado abaixo</span>
+            <fieldset>
+              <legend>
+                <span>0 encontrados</span>
+              </legend>
+              <Map center={initialPosition} zoom={15}>
+                <TileLayer
+                  attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+
+                {points.map((point) => (
+                  <Marker
+                    key={point.id}
+                    position={[point.latitude, point.longitude]}
+                  ></Marker>
+                ))}
+              </Map>
+            </fieldset>
           </form>
-
-          <Map center={initialPosition} zoom={15}>
-            <TileLayer
-              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-
-            <Marker position={initialPosition} />
-          </Map>
         </main>
       </div>
     </div>
