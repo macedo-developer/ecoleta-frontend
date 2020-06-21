@@ -51,6 +51,8 @@ const ListPoints = () => {
                 </div>
               </div>
             </fieldset>
+
+            <button type="submit">Pesquisar</button>
           </form>
 
           <Map center={initialPosition} zoom={15}>
