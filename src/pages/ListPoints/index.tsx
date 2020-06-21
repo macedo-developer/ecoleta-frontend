@@ -9,11 +9,19 @@ import logo from "../../assets/logo.svg";
 
 import "./styles.css";
 
+interface Item {
+  id: number;
+  title: string;
+  image_url: string;
+}
+
 const ListPoints = () => {
   const [initialPosition, setInitialPosition] = useState<[number, number]>([
     0,
     0,
   ]);
+
+  const [items, setItems] = useState<Item[]>([]);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -35,10 +43,13 @@ const ListPoints = () => {
         </header>
 
         <main>
-          <h1>Pontos de Coleta</h1>
+          <h1>Pesquise Pontos de Coleta</h1>
 
           <form>
             <fieldset>
+              <legend>
+                <h2>Dados</h2>
+              </legend>
               <div className="field-group">
                 <div className="field">
                   <label>Estado</label>
@@ -52,7 +63,24 @@ const ListPoints = () => {
               </div>
             </fieldset>
 
+            <fieldset>
+              <legend>
+                <span>Selecione um ou mais itens abaixo</span>
+              </legend>
+
+              <ul className="items-grid">
+                {items.map((item) => (
+                  <li key={item.id}>
+                    <img src={item.image_url} alt={item.title} />
+                    <span>{item.title}</span>
+                  </li>
+                ))}
+              </ul>
+            </fieldset>
+
             <button type="submit">Pesquisar</button>
+
+            <span>Consulte o resultado abaixo</span>
           </form>
 
           <Map center={initialPosition} zoom={15}>

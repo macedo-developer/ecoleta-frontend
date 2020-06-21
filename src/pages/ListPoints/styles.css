@@ -28,9 +28,13 @@
 }
 
 #page-list-point main {
-  margin: 80px auto;
-  padding: 64px;
   max-width: 730px;
+  margin: 80px auto;
+}
+
+#page-list-point form {
+  padding: 24px 64px;
+  margin: 30px auto;
   background: #fff;
   border-radius: 8px;
 
@@ -38,7 +42,11 @@
   flex-direction: column;
 }
 
-#page-list-point .leaflet-container {
+#page-list-point form fieldset {
+  margin-top: 24px;
+}
+
+#page-list-point main .leaflet-container {
   width: 100%;
   height: 350px;
   border-radius: 8px;
@@ -46,7 +54,7 @@
 }
 
 #page-list-point form button {
-  width: 260px;
+  width: 200px;
   height: 56px;
   background: var(--primary-color);
   border-radius: 8px;
@@ -54,8 +62,8 @@
   font-weight: bold;
   font-size: 16px;
   border: 0;
+  margin-bottom: 20px;
   align-self: flex-end;
-  margin-top: 40px;
   transition: background-color 0.2s;
   cursor: pointer;
 }
