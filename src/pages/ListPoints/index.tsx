@@ -38,17 +38,19 @@ const ListPoints = () => {
           <h1>Pontos de Coleta</h1>
 
           <form>
-            <div className="field-group">
-              <div className="field">
-                <legend>Estado</legend>
-                <input type="text" placeholder="Ex: PB" max={2} />
-              </div>
+            <fieldset>
+              <div className="field-group">
+                <div className="field">
+                  <label>Estado</label>
+                  <input type="text" placeholder="Ex: PB" max={2} />
+                </div>
 
-              <div className="field">
-                <legend>Cidade</legend>
-                <input type="text" placeholder="Ex: João Pessoa" />
+                <div className="field">
+                  <label>Cidade</label>
+                  <input type="text" placeholder="Ex: João Pessoa" />
+                </div>
               </div>
-            </div>
+            </fieldset>
           </form>
 
           <Map center={initialPosition} zoom={15}>

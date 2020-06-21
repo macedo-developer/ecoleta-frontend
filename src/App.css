@@ -31,3 +31,103 @@ h6 {
   color: var(--title-color);
   font-family: Ubuntu;
 }
+
+form h1 {
+  font-size: 36px;
+}
+
+form fieldset {
+  margin-top: 64px;
+  min-inline-size: auto;
+  border: 0;
+}
+
+form legend {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+form legend h2 {
+  font-size: 24px;
+}
+
+form legend span {
+  font-size: 14px;
+  font-weight: normal;
+  color: var(--text-color);
+}
+
+form .field-group {
+  flex: 1;
+  display: flex;
+}
+
+form .field {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+form .field input[type="text"],
+form .field input[type="email"],
+form .field input[type="number"] {
+  flex: 1;
+  background: #f0f0f5;
+  border-radius: 8px;
+  border: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: #6c6c80;
+}
+
+form .field select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  flex: 1;
+  background: #f0f0f5;
+  border-radius: 8px;
+  border: 0;
+  padding: 16px 24px;
+  font-size: 16px;
+  color: #6c6c80;
+}
+
+form .field input::placeholder {
+  color: #a0a0b2;
+}
+
+form .field label {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+form .field :disabled {
+  cursor: not-allowed;
+}
+
+form .field-group .field + .field {
+  margin-left: 24px;
+}
+
+form .field-group input + input {
+  margin-left: 24px;
+}
+
+form .field-check {
+  flex-direction: row;
+  align-items: center;
+}
+
+form .field-check input[type="checkbox"] {
+  background: #f0f0f5;
+}
+
+form .field-check label {
+  margin: 0 0 0 8px;
+}
