@@ -85,3 +85,8 @@
 #page-list-point form button:hover {
   background: #2fb86e;
 }
+
+#page-list-point form .leaflet-container img {
+  width: 200px;
+  height: 200px;
+}

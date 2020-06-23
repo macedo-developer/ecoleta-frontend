@@ -160,6 +160,7 @@ const ListPoints = () => {
                     key={point.id}
                     position={[point.latitude, point.longitude]}
                   >
+                    {/* <img src={point.image_url} alt={point.name} /> */}
                     <p>{point.name}</p>
                   </Popup>
                 ))}
