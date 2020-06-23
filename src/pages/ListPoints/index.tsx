@@ -156,10 +156,12 @@ const ListPoints = () => {
                 />
 
                 {points.map((point) => (
-                  <Marker
+                  <Popup
                     key={point.id}
                     position={[point.latitude, point.longitude]}
-                  ></Marker>
+                  >
+                    <p>{point.name}</p>
+                  </Popup>
                 ))}
               </Map>
             </fieldset>
