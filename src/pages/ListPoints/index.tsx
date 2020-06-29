@@ -147,7 +147,8 @@ const ListPoints = () => {
 
             <fieldset>
               <legend>
-                <span>0 encontrados</span>
+                <span>{points.length} encontrados</span>
+                <span>Clique no marcador para mais informações</span>
               </legend>
               <Map center={initialPosition} zoom={15}>
                 <TileLayer
@@ -156,13 +157,15 @@ const ListPoints = () => {
                 />
 
                 {points.map((point) => (
-                  <Popup
+                  <Marker
                     key={point.id}
                     position={[point.latitude, point.longitude]}
                   >
-                    {/* <img src={point.image_url} alt={point.name} /> */}
-                    <p>{point.name}</p>
-                  </Popup>
+                    <Popup className="popup-marker">
+                      <img src={point.image_url} alt={point.name} />
+                      <p>{point.name}</p>
+                    </Popup>
+                  </Marker>
                 ))}
               </Map>
             </fieldset>
