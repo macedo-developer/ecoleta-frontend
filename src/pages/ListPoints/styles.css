@@ -93,11 +93,14 @@
 }
 #page-list-point form .popup-marker .leaflet-popup-content-wrapper {
   width: 100%;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--primary-color);
+
+  padding: 0;
 }
 #page-list-point form .popup-marker .leaflet-popup-content-wrapper img {
   width: 100%;

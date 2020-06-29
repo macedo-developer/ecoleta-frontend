@@ -1,6 +1,6 @@
 import React, { useState, useEffect, FormEvent } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 
 import { Map, Marker, TileLayer, Popup } from "react-leaflet";
@@ -27,6 +27,8 @@ interface Point {
 }
 
 const ListPoints = () => {
+  const history = useHistory();
+
   const [uf, setUf] = useState("");
   const [city, setCity] = useState("");
 
@@ -77,6 +79,10 @@ const ListPoints = () => {
         },
       })
       .then((response) => setPoints(response.data));
+  }
+
+  function handlePointDetail(id_point: number) {
+    history.push("detail-point", { id_point });
   }
 
   return (
@@ -162,7 +168,11 @@ const ListPoints = () => {
                     position={[point.latitude, point.longitude]}
                   >
                     <Popup className="popup-marker">
-                      <img src={point.image_url} alt={point.name} />
+                      <img
+                        src={point.image_url}
+                        alt={point.name}
+                        onClick={() => handlePointDetail(point.id)}
+                      />
                       <p>{point.name}</p>
                     </Popup>
                   </Marker>
