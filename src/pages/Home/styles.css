@@ -109,26 +109,3 @@
 #page-home .content main a:hover {
   background: #2fb86e;
 }
-
-@media (max-width: 900px) {
-  #page-home .content {
-    align-items: center;
-    text-align: center;
-  }
-
-  #page-home .content header {
-    margin: 48px auto 0;
-  }
-
-  #page-home .content main {
-    align-items: center;
-  }
-
-  #page-home .content main h1 {
-    font-size: 42px;
-  }
-
-  #page-home .content main p {
-    font-size: 24px;
-  }
-}
