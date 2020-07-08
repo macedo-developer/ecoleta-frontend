@@ -1,0 +1,38 @@
+@media (max-width: 1024px) {
+  #page-list-point header {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 425px) {
+  #page-list-point form {
+    padding: 14px 34px;
+  }
+
+  #page-list-point h1 {
+    text-align: center;
+    font-size: 24px;
+  }
+
+  form .field-group {
+    flex-direction: column;
+  }
+
+  form .field-group .field + .field {
+    margin-left: 0;
+  }
+
+  #page-list-point form button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 375px) {
+  #page-list-point header {
+    padding: 10px;
+  }
+
+  #page-list-point form fieldset .items-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
