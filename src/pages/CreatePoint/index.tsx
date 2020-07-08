@@ -10,6 +10,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import InputMask from "react-input-mask";
 
 import "./styles.css";
+import "./responsive.css";
 
 import logo from "../../assets/logo.svg";
 

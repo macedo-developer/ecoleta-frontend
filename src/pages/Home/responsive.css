@@ -44,6 +44,9 @@
 @media (max-width: 425px) {
   #page-home .content {
     padding: 16px;
+
+    align-items: center;
+    text-align: center;
   }
 
   #page-home .content header {
@@ -52,7 +55,7 @@
 
   #page-home .content header a {
     position: absolute;
-    bottom: 48px;
+    bottom: 16px;
     left: 50%;
 
     transform: translateX(-50%);
