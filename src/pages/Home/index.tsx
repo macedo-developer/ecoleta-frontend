@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FiLogIn, FiList } from "react-icons/fi";
 
-import "./responsive.css";
 import "./styles.css";
+import "./responsive.css";
 
 import logo from "../../assets/logo.svg";
 

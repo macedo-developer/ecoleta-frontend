@@ -55,7 +55,7 @@
 
   #page-home .content header a {
     position: absolute;
-    bottom: 16px;
+    top: calc(100vh - 40px);
     left: 50%;
 
     transform: translateX(-50%);
@@ -66,6 +66,6 @@
   }
 
   #page-home .content main p {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
