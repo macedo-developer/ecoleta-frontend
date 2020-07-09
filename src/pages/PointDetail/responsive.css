@@ -1,0 +1,16 @@
+@media (max-width: 1024px) {
+  #page-detail-point header {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  #page-detail-point header {
+    padding: 0;
+    flex-direction: column;
+  }
+
+  #page-detail-point header a {
+    margin-top: 24px;
+  }
+}

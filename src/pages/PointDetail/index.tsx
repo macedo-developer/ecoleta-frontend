@@ -13,6 +13,7 @@ import logo from "../../assets/logo.svg";
 import api from "../../services/api";
 
 import "./styles.css";
+import "./responsive.css";
 
 interface RouteParams {
   location: {

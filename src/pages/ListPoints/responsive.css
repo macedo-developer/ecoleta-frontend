@@ -5,6 +5,14 @@
 }
 
 @media (max-width: 425px) {
+  #page-list-point header {
+    flex-direction: column;
+  }
+
+  #page-list-point header a {
+    margin-top: 24px;
+  }
+
   #page-list-point form {
     padding: 14px 34px;
   }
