@@ -4,6 +4,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  #page-list-point h1 {
+    text-align: center;
+  }
+}
+
 @media (max-width: 425px) {
   #page-list-point header {
     flex-direction: column;
@@ -13,13 +19,12 @@
     margin-top: 24px;
   }
 
-  #page-list-point form {
-    padding: 14px 34px;
+  #page-list-point h1 {
+    font-size: 24px;
   }
 
-  #page-list-point h1 {
-    text-align: center;
-    font-size: 24px;
+  #page-list-point form {
+    padding: 14px 34px;
   }
 
   form .field-group {
