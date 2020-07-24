@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FiLogIn, FiList } from "react-icons/fi";
+import { FiLogIn, FiSearch } from "react-icons/fi";
 
 import "./styles.css";
 import "./responsive.css";
@@ -14,7 +14,7 @@ const Home = () => {
         <header>
           <img src={logo} alt="Ecoleta" />
           <Link to="/list-points">
-            <FiList size={20} color="#34cb79" />
+            <FiSearch size={20} color="#34cb79" />
             Pontos de coleta
           </Link>
         </header>
